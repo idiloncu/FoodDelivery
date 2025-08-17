@@ -1,29 +1,22 @@
 package com.example.fooddelivery.ui.theme
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 
+object AppTheme {
+    val colors: AppColors
+        @Composable get() = LocalAppColors.current
+
+    val typography: AppTyphography
+        @Composable get() = LocalAppTyphography.current
+}
+
 @Composable
-fun AppTheme(
-    content: @Composable () -> Unit
-) {
+fun FoodDeliveryTheme(content: @Composable () -> Unit) {
     CompositionLocalProvider(
         LocalAppColors provides extendedColors,
         LocalAppTyphography provides extendedTyphography
     ) {
-        MaterialTheme(
-            content = content
-        )
+        content()
     }
-}
-
-object AppTheme {
-    val colors: AppColors
-        @Composable
-        get() = LocalAppColors.current
-    val typography: AppTyphography
-        @Composable
-        get() = LocalAppTyphography.current
-
 }
