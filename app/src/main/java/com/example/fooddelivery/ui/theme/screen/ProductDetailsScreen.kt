@@ -9,18 +9,24 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.fooddelivery.data.ProductFlavorState
+import com.example.fooddelivery.data.ProductFlavorsData
 import com.example.fooddelivery.data.ProductPreviewState
 import com.example.fooddelivery.ui.theme.screen.components.FlavorSection
 import com.example.fooddelivery.ui.theme.screen.components.ProductPreviewSection
 
 @Composable
-fun ProductDetailsScreen(modifier: Modifier = Modifier,productPreviewState: ProductPreviewState = ProductPreviewState()) {
+fun ProductDetailsScreen(
+    modifier: Modifier = Modifier,
+    productPreviewState: ProductPreviewState = ProductPreviewState(),
+    productFlavors : List<ProductFlavorState> = ProductFlavorsData
+) {
     val scrollState = rememberScrollState()
 
     Column(modifier = modifier.verticalScroll(scrollState)) {
 
         ProductPreviewSection(state = productPreviewState)
         Spacer(modifier = Modifier.height(16.dp))
-        FlavorSection(modifier = Modifier.padding(horizontal = 18.dp))
+        FlavorSection(modifier = Modifier.padding(horizontal = 18.dp), data = productFlavors)
     }
 }
